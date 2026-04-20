@@ -4,7 +4,7 @@
 >
 > Follow me on X: [https://x.com/jiayuan_jy](https://x.com/jiayuan_jy)
 
-A single `CLAUDE.md` file to improve Claude Code behavior, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.
+A set of behavioral guidelines to improve AI coding assistant behavior, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls. Supports **Claude Code**, **Cursor**, **OpenCode**, and **Codex**.
 
 English | [简体中文](./README.zh.md)
 
@@ -98,6 +98,16 @@ Strong success criteria let the LLM loop independently. Weak criteria ("make it 
 
 ## Install
 
+**Quick Install (all tools)**
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/weichengwu/andrej-karpathy-skills/main/install.sh)
+```
+
+This interactive script lets you choose which tools to install for: Claude Code, Cursor, OpenCode, and/or Codex.
+
+### Claude Code
+
 **Option A: Claude Code Plugin (recommended)**
 
 From within Claude Code, first add the marketplace:
@@ -116,18 +126,56 @@ This installs the guidelines as a Claude Code plugin, making the skill available
 
 New project:
 ```bash
-curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md
+curl -o CLAUDE.md https://raw.githubusercontent.com/weichengwu/andrej-karpathy-skills/main/CLAUDE.md
 ```
 
 Existing project (append):
 ```bash
 echo "" >> CLAUDE.md
-curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
+curl https://raw.githubusercontent.com/weichengwu/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
 ```
+
+### OpenCode
+
+**Option A: AGENTS.md (recommended)**
+
+Copy `AGENTS.md` into your project root:
+```bash
+curl -o AGENTS.md https://raw.githubusercontent.com/weichengwu/andrej-karpathy-skills/main/AGENTS.md
+```
+
+OpenCode also reads `CLAUDE.md`, so Option B above works too.
+
+**Option B: OpenCode Skill**
+
+Copy the skill directory into your OpenCode skills folder:
+```bash
+mkdir -p ~/.config/opencode/skills
+cp -r skills/karpathy-guidelines ~/.config/opencode/skills/
+```
+
+See **[OPENCODE.md](OPENCODE.md)** for more details.
+
+### Codex
+
+Copy `AGENTS.md` into your project root:
+```bash
+curl -o AGENTS.md https://raw.githubusercontent.com/weichengwu/andrej-karpathy-skills/main/AGENTS.md
+```
+
+Codex uses `AGENTS.md` as its primary instruction file. It supports hierarchical placement in subdirectories. See **[CODEX.md](CODEX.md)** for more details.
 
 ## Using with Cursor
 
 This repository includes a committed Cursor project rule ([`.cursor/rules/karpathy-guidelines.mdc`](.cursor/rules/karpathy-guidelines.mdc)) so the same guidelines apply when you open the project in Cursor. See **[CURSOR.md](CURSOR.md)** for setup, using the rule in other projects, and how this relates to Claude Code.
+
+## Using with OpenCode
+
+This repository includes an [`AGENTS.md`](AGENTS.md) file that OpenCode reads automatically as project-level instructions. See **[OPENCODE.md](OPENCODE.md)** for setup details, skill installation, and comparison with other tools.
+
+## Using with Codex
+
+This repository includes an [`AGENTS.md`](AGENTS.md) file that Codex reads automatically as its primary instruction file. See **[CODEX.md](CODEX.md)** for setup details, hierarchical placement, and comparison with other tools.
 
 ## Key Insight
 
